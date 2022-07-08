@@ -29,7 +29,6 @@ window.fbAsyncInit = function () {
     FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
         statusChangeCallback(response);
         // Returns the login status.
-        console.log(response);
     });
     console.log("");
 
