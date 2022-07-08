@@ -29,16 +29,17 @@ window.fbAsyncInit = function () {
     FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
         statusChangeCallback(response);
         // Returns the login status.
+        console.log(response);
     });
+    console.log("");
 
-    FB.api(
-        '/me',
-        'GET',
-        {"fields":"first_name,id"},
-        function(response) {
-            console.log(response);
-        }
-    );
+
+    getInfor()
+
+
+
+
+
 };
 
 function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
@@ -48,4 +49,16 @@ function testAPI() {                      // Testing Graph API after login.  See
         document.getElementById('status').innerHTML =
             'Thanks for logging in, ' + response.name + '!';
     });
+}
+
+function getInfor() {
+    FB.api(
+        '/me',
+        'GET',
+        {"fields":"first_name,id"},
+        function(response) {
+            console.log(response.first_name);
+            console.log(response.id);
+        }
+    );
 }
