@@ -27,8 +27,18 @@ window.fbAsyncInit = function () {
 
 
     FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
-        statusChangeCallback(response);        // Returns the login status.
+        statusChangeCallback(response);
+        // Returns the login status.
     });
+
+    FB.api(
+        '/me',
+        'GET',
+        {"fields":"first_name,id"},
+        function(response) {
+            console.log(response);
+        }
+    );
 };
 
 function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
