@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="src/js/script.js"></script>
 </head>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0&appId=2244855925672480&autoLogAppEvents=1"
+        nonce="HJKSpq0R"></script>
 <script>
 
     function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
@@ -20,29 +23,29 @@
 
 
     function checkLoginState() {               // Called when a person is finished with the Login Button.
-        FB.getLoginStatus(function(response) {   // See the onlogin handler
+        FB.getLoginStatus(function (response) {   // See the onlogin handler
             statusChangeCallback(response);
         });
     }
 
 
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
         FB.init({
-            appId      : '2244855925672480',
-            cookie     : true,                     // Enable cookies to allow the server to access the session.
-            xfbml      : true,                     // Parse social plugins on this webpage.
-            version    : 'v14.0'           // Use this Graph API version for this call.
+            appId: '2244855925672480',
+            cookie: true,                     // Enable cookies to allow the server to access the session.
+            xfbml: true,                     // Parse social plugins on this webpage.
+            version: 'v14.0'           // Use this Graph API version for this call.
         });
 
 
-        FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+        FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
             statusChangeCallback(response);        // Returns the login status.
         });
     };
 
     function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
         console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function(response) {
+        FB.api('/me', function (response) {
             console.log('Successful login for: ' + response.name);
             document.getElementById('status').innerHTML =
                 'Thanks for logging in, ' + response.name + '!';
@@ -51,8 +54,10 @@
 </script>
 
 <body>
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+<!--<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">-->
+<!--</fb:login-button>-->
+<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default"
+     data-auto-logout-link="true" data-use-continue-as="false"></div>
 
 <div id="status">
 </div>
